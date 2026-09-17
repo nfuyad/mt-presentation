@@ -19,7 +19,6 @@
   --ink-2: #7a4a3c;
   --ink-3: #a8776a;
 
-  --grid: rgba(252, 157, 45, 0.3);
 
   --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --body: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -99,9 +98,6 @@ button {
   inset: 0;
   padding: 104px 96px 120px;
   background-color: var(--paper);
-  background-image: radial-gradient(circle, var(--grid) 1.6px, transparent 1.7px);
-  background-size: 64px 64px;
-  background-position: 32px 32px;
 }
 
 .slide--plain {
@@ -162,13 +158,6 @@ button {
   white-space: nowrap;
 }
 
-.rule {
-  width: 120px;
-  height: 6px;
-  background: var(--red);
-  border-radius: 3px;
-  margin: 28px 0 0;
-}
 
 /* ---------- Chrome: the mark and the title block ----------
    Progress is the rover's own position along the mission map at the foot of the
@@ -189,9 +178,8 @@ button {
 }
 
 .titleblock__num {
-  font-family: var(--mono);
-  font-size: 20px;
-  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
   color: var(--ink);
 }
 
@@ -221,25 +209,6 @@ button {
 
 .lockup--corner .lockup__mark {
   height: 60px;
-}
-
-/* Standing on a photograph, the marks sit on a pane of frosted glass: the desert
-   still reads through it, blurred, and the marks stay legible over any of it. */
-.lockup--glass {
-  padding: 22px 36px;
-  border-radius: 26px;
-  /* White glass, not the sheet's warm paper: the fill is neutral and the backdrop
-     is desaturated on the way through, so the desert behind does not tint it. */
-  background: rgba(255, 255, 255, 0.68);
-  -webkit-backdrop-filter: blur(28px) saturate(0.4) brightness(1.22);
-  backdrop-filter: blur(28px) saturate(0.4) brightness(1.22);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 16px 46px rgba(59, 28, 20, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-/* On white glass the sheet's warm hairline reads orange — keep it neutral. */
-.lockup--glass .lockup__rule {
-  background: rgba(24, 20, 20, 0.16);
 }
 
 .lockup__rule {
@@ -274,89 +243,39 @@ button {
   height: auto;
 }
 
-/* ---------- Shared UI components ---------- */
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: var(--paper-2);
-  border: 2px solid var(--line);
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--ink);
-  white-space: nowrap;
+/* ---------- Ruled text ----------
+   The deck holds things apart with type and a rule, not with boxes. A ruled
+   block is a top rule and the words under it; the rule's colour says which
+   group it belongs to. */
+.ruled {
+  border-top: 3px solid var(--line-2);
+  padding-top: 16px;
 }
 
-.chip--red {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
+.ruled--orange {
+  border-top-color: var(--orange);
 }
 
-.chip--orange {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: var(--ink);
+.ruled--red {
+  border-top-color: var(--red);
 }
 
-.chip--peach {
-  background: var(--peach);
-  border-color: var(--peach-2);
-}
-
-.chip__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--orange);
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.card {
-  background: var(--paper-2);
-  border: 2px solid var(--line);
-  border-radius: 24px;
-  padding: 28px 32px;
-}
-
-.card--peach {
-  background: var(--peach);
-  border-color: var(--peach-2);
-}
-
-.card--blush {
-  background: var(--blush);
-  border-color: var(--blush-2);
-}
-
-.card--white {
-  background: #fff;
+.ruled--ink {
+  border-top-color: var(--ink);
 }
 
 /* ---------- Photographs ----------
    A photograph is uncovered by a curtain in the paper's own colour and fades up
    out of a slight zoom. Nothing is laid over the picture once it is up. */
 .frame {
-  --pad: 10px;
   position: relative;
-  border: 2px solid var(--line-2);
-  border-radius: 20px;
   background: var(--paper-2);
-  padding: var(--pad);
 }
 
 .frame__shot {
   position: absolute;
-  inset: var(--pad);
-  border-radius: 12px;
+  inset: 0;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -364,7 +283,6 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
 }
 
 /* A line drawing sits straight on the sheet with no frame at all, its edges
@@ -381,31 +299,6 @@ button {
   background: var(--paper);
   transform-origin: top center;
   z-index: 2;
-}
-
-.frame__corner {
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  border-color: var(--orange);
-  border-style: solid;
-  border-width: 0;
-}
-
-.frame__corner--tl {
-  top: -2px;
-  left: -2px;
-  border-top-width: 4px;
-  border-left-width: 4px;
-  border-top-left-radius: 20px;
-}
-
-.frame__corner--br {
-  bottom: -2px;
-  right: -2px;
-  border-bottom-width: 4px;
-  border-right-width: 4px;
-  border-bottom-right-radius: 20px;
 }
 
 .bignum {
@@ -467,87 +360,65 @@ button {
 }
 
 /* ---------- Org chart ----------
-   A box on the chart: rank on the left, role beside it, sitting on the sheet the
-   same way the cards do. */
+   Roles are words on the wires, not boxes: the connector runs into the name. */
 .flow-node {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 0 24px;
-  border-radius: 20px;
-  border: 2px solid var(--line);
-  background: var(--paper-2);
-}
-
-.flow-node--lead {
-  border-color: var(--red);
-  background: var(--blush);
-}
-
-.flow-node--tech {
-  border-color: var(--peach-2);
-  background: var(--peach);
-  justify-content: center;
-}
-
-.flow-node--soft {
-  border-color: var(--line-2);
-  background: #fff;
-  justify-content: center;
-}
-
-.flow-node__rank {
-  font-family: var(--mono);
-  font-size: 20px;
-  letter-spacing: 0.04em;
-  color: var(--ink-3);
 }
 
 .flow-node__name {
-  font-size: 27px;
-  font-weight: 500;
-  line-height: 1.15;
-  color: var(--ink);
-}
-
-/* A sub-team on the chart: what it is called, and what it is responsible for. */
-.flow-unit__name {
-  font-size: 25px;
-  font-weight: 500;
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 600;
   line-height: 1.1;
   color: var(--ink);
-  margin: 0 0 7px;
+  white-space: nowrap;
+}
+
+.flow-node--lead .flow-node__name {
+  color: var(--red);
+}
+
+.flow-node__count {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--red);
+}
+
+.flow-unit__name {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 8px;
 }
 
 .flow-unit__what {
-  font-size: 19px;
-  line-height: 1.32;
+  font-size: 22px;
+  line-height: 1.3;
   color: var(--ink-2);
   margin: 0;
 }
 
-/* ---------- The four things the rover does, lighting up in turn ---------- */
+/* ---------- The four things the rover does, lighting up in turn ----------
+   A bar over each label; the one being played is red and full weight. */
 .act {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 18px 22px;
-  border-radius: 18px;
-  border: 2px solid var(--line);
-  background: var(--paper-2);
-}
-
-.act__n {
-  font-family: var(--mono);
-  font-size: 18px;
-  letter-spacing: 0.06em;
-  opacity: 0.75;
-}
-
-.act__label {
-  font-size: 24px;
+  position: relative;
+  padding-top: 20px;
+  font-size: 26px;
   font-weight: 500;
   line-height: 1.15;
+}
+
+.act__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  border-radius: 1px;
+  transform-origin: left center;
 }
 
 /* ---------- Split-flap board ----------
@@ -684,9 +555,8 @@ button {
 }
 
 .timeline__when {
-  font-family: var(--mono);
-  font-size: 19px;
-  letter-spacing: 0.04em;
+  font-size: 20px;
+  font-weight: 600;
   color: var(--ink-3);
   margin: 0 0 6px;
 }
@@ -765,9 +635,8 @@ button {
 
 .roster__count {
   margin-left: 8px;
-  font-family: var(--mono);
-  font-size: 17px;
-  letter-spacing: 0.06em;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
 
@@ -777,12 +646,9 @@ button {
 .logo-slot {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 132px;
-  border-radius: 20px;
-  border: 2px solid var(--line);
-  background: #fff;
-  padding: 22px 28px;
+  padding: 18px 0;
 }
 
 .logo-slot img {
@@ -836,9 +702,18 @@ button {
   color: var(--ink);
   margin: 0;
   max-width: 1060px;
-  text-wrap: balance;
-  border-left: 6px solid var(--red);
-  padding-left: 32px;
+  text-wrap: pretty;
+  text-indent: -0.42em;
+}
+
+.quote::before {
+  content: '\201C';
+  color: var(--red);
+}
+
+.quote::after {
+  content: '\201D';
+  color: var(--red);
 }
 
 /* ---------- The finalists, flipping like a departure board ---------- */
@@ -878,10 +753,8 @@ button {
 }
 
 .flip__country {
-  font-family: var(--mono);
-  font-size: 21px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 500;
   color: var(--ink-3);
   margin: 12px 0 0;
 }
@@ -900,9 +773,8 @@ button {
 }
 
 .flip__count {
-  font-family: var(--mono);
   margin-top: 14px;
-  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- A photograph that has not been supplied yet ---------- */
@@ -1027,8 +899,9 @@ button {
 .presenter__notes blockquote {
   margin: 0 0 16px;
   padding-left: 14px;
-  border-left: 4px solid var(--orange);
   font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
 }
 
 .presenter__next {
@@ -1075,6 +948,12 @@ button {
   background: var(--paper);
   border-radius: 5px;
   padding: 0 5px;
+}
+
+/* ---------- Browser surfaces ---------- */
+::selection {
+  background: var(--peach-2);
+  color: var(--ink);
 }
 
 /* ---------- Focus ---------- */

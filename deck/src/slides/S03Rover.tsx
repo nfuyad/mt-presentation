@@ -54,20 +54,21 @@ export function S03Rover() {
       </div>
 
       {/* the four things it does, lighting up in turn */}
-      <div className="abs" style={{ left: 590, top: 716, width: 1138, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
+      <div className="abs" style={{ left: 590, top: 716, width: 1138, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28 }}>
         {ACTS.map((a, i) => (
-          <Reveal key={a.id} delay={0.2 + i * 0.07} y={8}>
+          <Reveal key={a.id} delay={0.2 + i * 0.07}>
             <motion.div
               className="act"
-              animate={{
-                backgroundColor: i === act ? 'rgb(232, 39, 39)' : 'rgb(255, 245, 235)',
-                borderColor: i === act ? 'rgb(232, 39, 39)' : 'rgb(243, 216, 192)',
-                color: i === act ? 'rgb(255, 255, 255)' : 'rgb(122, 74, 60)',
-              }}
-              transition={{ duration: reduced ? 0 : 0.4, ease: EASE }}
+              animate={{ color: i === act ? 'rgb(232, 39, 39)' : 'rgb(168, 119, 106)' }}
+              transition={{ duration: reduced ? 0 : 0.3, ease: EASE }}
             >
-              <span className="act__n">{String(i + 1).padStart(2, '0')}</span>
-              <span className="act__label">{a.label}</span>
+              <motion.span
+                className="act__bar"
+                animate={{ backgroundColor: i === act ? 'rgb(232, 39, 39)' : 'rgb(233, 195, 159)', scaleY: i === act ? 1 : 0.5 }}
+                transition={{ duration: reduced ? 0 : 0.3, ease: EASE }}
+                style={{ transformOrigin: 'center top' }}
+              />
+              {a.label}
             </motion.div>
           </Reveal>
         ))}

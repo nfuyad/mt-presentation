@@ -5,8 +5,7 @@ import { useReduced } from '../components/motionPrefs'
 import { JOIN_URL } from '../content/deck'
 
 /* The close. The photograph is the sheet, and it breathes — a slow push-in over
-   the time the slide is up. The statement wipes on line by line, the rule draws
-   itself, and the QR scans itself in and then keeps a quiet pulse on its corners,
+   the time the slide is up. The statement wipes on line by line, and the QR scans itself in and then keeps a quiet pulse on its corners,
    so the one thing the audience is meant to do is the one thing that keeps
    moving. Down on the map the rover has reached the last station, and every stop
    lights in a wave (see RoverTrack). */
@@ -43,7 +42,7 @@ export function S14Close() {
       {/* a lighter wash on the right, under the QR and its label */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(270deg, rgba(24,12,9,0.62) 0%, rgba(24,12,9,0.28) 22%, rgba(24,12,9,0) 40%)' }} />
 
-      {/* the statement, one line at a time, then the rule under it */}
+      {/* the statement, one line at a time */}
       <div className="abs" style={{ left: 96, top: 196, width: 900 }}>
         {LINES.map((line, i) => (
           <motion.span
@@ -57,17 +56,15 @@ export function S14Close() {
             {line}
           </motion.span>
         ))}
-        <motion.div
-          className="rule"
-          style={{ transformOrigin: 'left center' }}
-          initial={{ scaleX: reduced ? 1 : 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.85, ease: EASE }}
-        />
         <Reveal delay={1.0}>
           <p className="lead" style={{ marginTop: 28, color: 'rgba(255,251,247,0.84)', maxWidth: 560 }}>
-            Join the journey of future exploration. Build your dream and solve problems with us, 
+            Join the journey of future exploration. Build your dream and solve problems with us,
             and be part of the next generation of space robotics.
+          </p>
+        </Reveal>
+        <Reveal delay={1.15}>
+          <p className="small" style={{ marginTop: 20, color: 'rgba(255,251,247,0.6)', letterSpacing: '0.02em' }}>
+            25th Anniversary of BRAC University
           </p>
         </Reveal>
       </div>
@@ -86,7 +83,7 @@ export function S14Close() {
             <>
               <motion.span
                 aria-hidden="true"
-                style={{ position: 'absolute', left: PAD, right: PAD, height: 3, borderRadius: 2, background: 'var(--red)', boxShadow: '0 0 14px rgba(232, 39, 39, 0.6)' }}
+                style={{ position: 'absolute', left: PAD, right: PAD, height: 3, borderRadius: 2, background: 'var(--red)', }}
                 initial={{ top: PAD, opacity: 0 }}
                 animate={{ top: [PAD, PAD + QR, PAD + QR], opacity: [0, 1, 0] }}
                 transition={{ duration: 1.5, delay: 1.7, ease: 'easeInOut' }}
@@ -106,7 +103,7 @@ export function S14Close() {
         </a>
         <div>
           <p className="lead" style={{ fontWeight: 500, color: 'var(--paper)' }}>Scan to join</p>
-          <p className="small" style={{ marginTop: 6, fontFamily: 'var(--mono)', fontSize: 20, color: 'rgba(255,251,247,0.72)' }}>{JOIN_URL.replace(/^https?:\/\//, '')}</p>
+          <p className="small" style={{ marginTop: 6, fontSize: 22, color: 'rgba(255,251,247,0.72)' }}>{JOIN_URL.replace(/^https?:\/\//, '')}</p>
         </div>
       </Reveal>
     </div>

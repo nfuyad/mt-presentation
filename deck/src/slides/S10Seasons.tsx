@@ -39,13 +39,13 @@ export function S10Seasons() {
         {[1, 5, 10, 15, 20].map((r) => (
           <g key={r}>
             <line x1={PAD.l - 20} x2={W - PAD.r + 20} y1={yOf(r)} y2={yOf(r)} stroke="var(--line)" strokeWidth="2" strokeDasharray={r === 1 ? undefined : '2 10'} />
-            <text x={PAD.l - 34} y={yOf(r) + 8} textAnchor="end" fontFamily="var(--mono)" fontSize="22" fill="var(--ink-3)">
+            <text x={PAD.l - 34} y={yOf(r) + 8} textAnchor="end" fontFamily="var(--body)" fontSize="24" style={{ fontVariantNumeric: 'tabular-nums' }} fill="var(--ink-3)">
               {r === 1 ? '1st' : r}
             </text>
           </g>
         ))}
         {SEASONS.map((s, i) => (
-          <text key={s.year} x={xOf(i)} y={H - 16} textAnchor="middle" fontFamily="var(--mono)" fontSize="24" fill="var(--ink)">
+          <text key={s.year} x={xOf(i)} y={H - 16} textAnchor="middle" fontFamily="var(--body)" fontWeight="500" fontSize="26" fill="var(--ink)" style={{ fontVariantNumeric: 'tabular-nums' }}>
             {s.year}
           </text>
         ))}

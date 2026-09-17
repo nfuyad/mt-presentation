@@ -52,14 +52,14 @@ export function S12Partners() {
       </Reveal>
 
       {/* the global partners: one tile each, and what each collaboration produced */}
-      <Reveal delay={0.2} className="abs small" style={{ left: 0, top: 204 }}>
-        Global industry partners
-      </Reveal>
-      <div className="abs" style={{ left: 0, top: 236, width: 1728, display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 20 }}>
+      <div className="abs" style={{ left: 0, top: 196, width: 1728, display: 'grid', gridTemplateColumns: '170px repeat(5, 1fr)', columnGap: 28 }}>
+        <Reveal delay={0.2} className="ruled ruled--ink">
+          <p className="body" style={{ fontWeight: 600, fontSize: 24, lineHeight: 1.2 }}>Global industry partners</p>
+        </Reveal>
         {PARTNERS.map((p, i) => (
-          <Reveal key={p.slot} delay={0.26 + i * 0.07} y={10}>
-            <Logo slot={p.slot} name={p.name} className="logo-slot" height={112} />
-            <p className="small" style={{ marginTop: 10, fontSize: 19, lineHeight: 1.28 }}>{p.what}</p>
+          <Reveal key={p.slot} delay={0.26 + i * 0.07} className="ruled">
+            <Logo slot={p.slot} name={p.name} className="logo-slot" height={84} />
+            <p className="small" style={{ marginTop: 6, fontSize: 20, lineHeight: 1.28 }}>{p.what}</p>
           </Reveal>
         ))}
       </div>
@@ -72,32 +72,25 @@ export function S12Partners() {
       </Reveal>
 
       {/* why: two reasons it is not about the rulebook, sharing the band's height */}
-      <div className="abs" style={{ left: 768, top: 428, width: 522, height: 262, display: 'grid', gridTemplateRows: '1fr 1fr', gap: 12 }}>
+      <div className="abs" style={{ left: 768, top: 428, width: 522, height: 262, display: 'grid', gridTemplateRows: '1fr 1fr', gap: 20 }}>
         {COLLABORATION.map((c, i) => (
-          <Reveal
-            key={c.k}
-            delay={0.66 + i * 0.08}
-            y={8}
-            className="card"
-            style={{ padding: '14px 20px', borderRadius: 18, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
-          >
-            <p className="body" style={{ fontWeight: 500, fontSize: 24, lineHeight: 1.15, marginBottom: 4 }}>{c.k}</p>
-            <p className="small" style={{ fontSize: 18, lineHeight: 1.3 }}>{c.v}</p>
+          <Reveal key={c.k} delay={0.66 + i * 0.08} className="ruled">
+            <p className="body" style={{ fontWeight: 600, fontSize: 25, lineHeight: 1.15, marginBottom: 6 }}>{c.k}</p>
+            <p className="small" style={{ fontSize: 20, lineHeight: 1.3 }}>{c.v}</p>
           </Reveal>
         ))}
       </div>
 
       {/* the one that came before: the trust of the country's largest conglomerate */}
-      <Reveal delay={0.9} y={8} className="abs card card--blush" style={{ left: 1310, top: 428, width: 418, height: 262, padding: '16px 20px' }}>
-        <Logo slot={PREVIOUS_PARTNER.slot} name={PREVIOUS_PARTNER.name} className="logo-slot" height={100} />
-        <p className="small" style={{ margin: '10px 0 2px', fontSize: 19 }}>Previous partner</p>
-        <p className="body" style={{ fontWeight: 500, fontSize: 23, lineHeight: 1.2 }}>{PREVIOUS_PARTNER.line}</p>
-        <p className="small" style={{ marginTop: 4, fontSize: 18 }}>{PREVIOUS_PARTNER.when}</p>
+      <Reveal delay={0.9} className="abs ruled ruled--red" style={{ left: 1330, top: 428, width: 398, height: 262 }}>
+        <Logo slot={PREVIOUS_PARTNER.slot} name={PREVIOUS_PARTNER.name} className="logo-slot" height={78} />
+        <p className="body" style={{ fontWeight: 600, fontSize: 25, lineHeight: 1.2, marginTop: 6 }}>{PREVIOUS_PARTNER.line}</p>
+        <p className="small" style={{ marginTop: 8, fontSize: 20 }}>Previous partner · {PREVIOUS_PARTNER.when}</p>
       </Reveal>
 
       {/* everyone else behind the team, going past on the belt */}
       <Reveal delay={1.0} y={6} className="abs" style={{ left: 0, top: 712, width: 1728, height: 64, display: 'flex', alignItems: 'center', gap: 24 }}>
-        <p className="small" style={{ flex: '0 0 150px', fontSize: 18, lineHeight: 1.25 }}>Also behind the team</p>
+        <p className="small" style={{ flex: '0 0 170px', fontSize: 22, lineHeight: 1.2, fontWeight: 500 }}>Also behind the team</p>
         <div style={{ flex: 1, minWidth: 0 }}>
           <Conveyor />
         </div>

@@ -23,14 +23,14 @@ export function S13Struggle() {
         <div key={s.year} className="abs" style={{ left: i * 590, top: 214, width: 548 }}>
           {READY[s.year] ? (
             <Reveal delay={0.1 + i * 0.1} y={0} scale={0.985}>
-              <Frame src={s.photo} alt={s.photoNote} delay={0.1 + i * 0.1} style={{ height: 200 }} position="center 55%" />
+              <Frame src={s.photo} alt={s.photoNote} delay={0.1 + i * 0.1} style={{ height: 184 }} position="center 55%" />
             </Reveal>
           ) : (
             <Placeholder file={s.photo} note={s.photoNote} delay={0.1 + i * 0.1} style={{ position: 'relative', left: 0, top: 0, width: '100%', height: 200 }} />
           )}
           <Reveal delay={0.2 + i * 0.1} style={{ marginTop: 22 }}>
-            <span className="chip chip--red" style={{ fontSize: 21, padding: '7px 16px' }}>URC {s.year}</span>
-            <p className="body" style={{ fontWeight: 500, fontSize: 26, lineHeight: 1.22, marginTop: 14 }}>{s.what}</p>
+            <p className="heading" style={{ fontSize: 40, color: 'var(--red)' }}>URC {s.year}</p>
+            <p className="body" style={{ fontWeight: 600, fontSize: 27, lineHeight: 1.2, marginTop: 10 }}>{s.what}</p>
             <p className="small" style={{ fontSize: 20, lineHeight: 1.32, marginTop: 10 }}>{s.fix}</p>
             <p className="small" style={{ fontSize: 18, marginTop: 10, color: 'var(--red)' }}>{s.lesson}</p>
           </Reveal>

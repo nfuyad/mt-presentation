@@ -18,23 +18,26 @@ export function S11Outreach() {
         <h2 className="heading">We also build future engineers!</h2>
       </Reveal>
 
-      <Reveal delay={0.1} className="abs card card--white" style={{ left: 0, top: 130, width: 620 }}>
-        <p className="lead" style={{ fontWeight: 500, lineHeight: 1.15 }}>
-          <Odometer className="bignum" value={OUTREACH.institutions} suffix="+" size={104} delay={0.35} style={{ display: 'flex', marginBottom: 8 }} />
-          schools and colleges across Bangladesh
-        </p>
-        <p className="small" style={{ marginTop: 10 }}>STEM sessions in the past {OUTREACH.years} years</p>
+      {/* the count, set large on the sheet, and what it counts */}
+      <Reveal delay={0.1} className="abs" style={{ left: 0, top: 130, width: 620 }}>
+        <Odometer className="bignum" value={OUTREACH.institutions} suffix="+" size={168} delay={0.35} style={{ display: 'flex' }} />
+        <p className="lead" style={{ fontWeight: 500, lineHeight: 1.2, marginTop: 14 }}>schools and colleges across Bangladesh</p>
+        <p className="small" style={{ marginTop: 8, fontSize: 24 }}>STEM sessions in the past {OUTREACH.years} years</p>
       </Reveal>
 
-      <Reveal delay={0.2} className="abs" style={{ left: 0, top: 480, width: 620 }}>
-        <p className="small" style={{ marginBottom: 14 }}>And we mentor school teams into</p>
-        <div className="chips" style={{ gap: 12 }}>
-          {OUTREACH.mentors.map((m) => (
-            <span key={m} className="chip chip--orange" style={{ fontSize: 24 }}>{m}</span>
+      <Reveal delay={0.2} className="abs ruled" style={{ left: 0, top: 486, width: 600 }}>
+        <p className="body" style={{ color: 'var(--ink-2)' }}>
+          And we mentor school teams into{' '}
+          {OUTREACH.mentors.map((m, i) => (
+            <span key={m}>
+              {i > 0 && (i === OUTREACH.mentors.length - 1 ? ' and ' : ', ')}
+              <b style={{ fontWeight: 600, color: 'var(--ink)' }}>{m}</b>
+            </span>
           ))}
-        </div>
-        <p className="body" style={{ color: 'var(--ink-2)', marginTop: 22, maxWidth: 580 }}>
-          We belive that the next generation of engineers and scientists will be the ones to take humanity to Mars. We are proud to mentor them, and to show them that they can do it too.
+          .
+        </p>
+        <p className="body" style={{ color: 'var(--ink-2)', marginTop: 18 }}>
+          We believe that the next generation of engineers and scientists will be the ones to take humanity to Mars. We are proud to mentor them, and to show them that they can do it too.
         </p>
       </Reveal>
 
@@ -45,7 +48,7 @@ export function S11Outreach() {
       <div className="abs" style={{ left: 680, top: 560, width: 1048, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
         {PHOTOS.map((p, i) => (
           <Reveal key={p.src} delay={0.3 + i * 0.06} y={10}>
-            <Frame src={p.src} alt={p.alt} position={p.pos} delay={0.3 + i * 0.06} style={{ height: 186, '--pad': '6px' } as React.CSSProperties} />
+            <Frame src={p.src} alt={p.alt} position={p.pos} delay={0.3 + i * 0.06} style={{ height: 186 }} />
           </Reveal>
         ))}
       </div>

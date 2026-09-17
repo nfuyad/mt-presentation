@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { motion } from 'motion/react'
 import { useReduced } from '../components/motionPrefs'
 import { Reveal, EASE } from '../components/Reveal'
@@ -63,16 +64,16 @@ function Arrow({ x, y, delay, reduced }: { x: number; y: number; delay: number; 
 
 function Node({ x, y, w, h, delay, tone, children }: { x: number; y: number; w: number; h: number; delay: number; tone?: string; children: React.ReactNode }) {
   return (
-    <Reveal delay={delay} y={10} className={`abs flow-node ${tone ?? ''}`} style={{ left: x, top: y, width: w, height: h }}>
+    <Reveal delay={delay} className={`abs flow-node ${tone ?? ''}`} style={{ left: x, top: y, width: w, height: h, justifyContent: 'center' }}>
       {children}
     </Reveal>
   )
 }
 
-/** A sub-team: what it is called, and what it is actually responsible for. */
+/** A sub-team: what it is called, and what it is actually responsible for, under a rule. */
 function Unit({ name, what, delay, tone }: { name: string; what: string; delay: number; tone: string }) {
   return (
-    <Reveal delay={delay} y={8} className={`card ${tone}`} style={{ padding: '16px 20px', borderRadius: 18 }}>
+    <Reveal delay={delay} className={`ruled ${tone}`}>
       <p className="flow-unit__name">{name}</p>
       <p className="flow-unit__what">{what}</p>
     </Reveal>
@@ -85,69 +86,73 @@ export function S02About() {
   return (
     <div className="slide__inner">
       <Reveal className="abs" style={{ left: 0, top: 0, width: 860 }}>
-        <h2 className="statement" style={{ fontSize: 58 }}>
+        <h2 className="statement" style={{ fontSize: 64, lineHeight: 1 }}>
           We are dreamers
           <br />
           and problem solvers.
         </h2>
-        <div className="rule" style={{ margin: '20px 0 0' }} />
       </Reveal>
 
-      <Reveal delay={0.1} className="abs" style={{ left: 880, top: 2, width: 848 }}>
-        <p className="lead" style={{ display: 'flex', alignItems: 'baseline', gap: 16 }}>
-          <span className="bignum" style={{ fontSize: 64 }}>{TEAM.members}</span>
+      <Reveal delay={0.1} className="abs" style={{ left: 880, top: 0, width: 848 }}>
+        <p className="lead" style={{ display: 'flex', alignItems: 'baseline', gap: 18 }}>
+          <span className="bignum" style={{ fontSize: 72 }}>{TEAM.members}</span>
           <span style={{ fontWeight: 500 }}>undergraduates</span>
         </p>
-        <p className="small" style={{ margin: '4px 0 14px' }}>
+        <p className="small" style={{ margin: '10px 0 0', fontSize: 24, lineHeight: 1.4 }}>
           {TEAM.university} · {TEAM.departments.length} departments
+          <br />
+          <span style={{ color: 'var(--ink)' }}>
+            {TEAM.departments.map((d, i) => (
+              <Fragment key={d}>
+                {i > 0 && ' · '}
+                <span style={{ whiteSpace: 'nowrap' }}>{d}</span>
+              </Fragment>
+            ))}
+          </span>
         </p>
-        <div className="chips" style={{ gap: 9 }}>
-          {TEAM.departments.map((d, i) => (
-            <span key={d} className={`chip ${i % 2 ? 'chip--peach' : ''}`} style={{ fontSize: 20, padding: '6px 14px' }}>
-              {d}
-            </span>
-          ))}
-        </div>
       </Reveal>
 
       <div className="abs" style={{ left: 0, top: FLOW_TOP, width: 1728, height: FLOW_H }}>
         <svg className="abs" style={{ inset: 0 }} width="1728" height={FLOW_H} aria-hidden="true">
-          <Wire d={`M${CHAIN_X[0] + NODE_W} ${NODE_H / 2} H${CHAIN_X[1] - 14}`} delay={0.34} reduced={reduced} />
-          <Arrow x={CHAIN_X[1] - 14} y={NODE_H / 2} delay={0.66} reduced={reduced} />
-          <Wire d={`M${CHAIN_X[1] + NODE_W} ${NODE_H / 2} H${CHAIN_X[2] - 14}`} delay={0.62} reduced={reduced} />
-          <Arrow x={CHAIN_X[2] - 14} y={NODE_H / 2} delay={0.94} reduced={reduced} />
+          <Wire d={`M${CHAIN_X[0] + NODE_W - 40} ${NODE_H / 2} H${CHAIN_X[1] + 26}`} delay={0.34} reduced={reduced} />
+          <Arrow x={CHAIN_X[1] + 26} y={NODE_H / 2} delay={0.66} reduced={reduced} />
+          <Wire d={`M${CHAIN_X[1] + NODE_W - 40} ${NODE_H / 2} H${CHAIN_X[2] + 26}`} delay={0.62} reduced={reduced} />
+          <Arrow x={CHAIN_X[2] + 26} y={NODE_H / 2} delay={0.94} reduced={reduced} />
           <Wire
-            d={`M${TRUNK_X} ${NODE_H} V${BUS_Y} M${LEFT_C} ${BUS_Y} H${RIGHT_C} M${LEFT_C} ${BUS_Y} V${GROUP_Y - 2} M${RIGHT_C} ${BUS_Y} V${GROUP_Y - 2}`}
+            d={`M${TRUNK_X} ${NODE_H - 12} V${BUS_Y} M${LEFT_C} ${BUS_Y} H${RIGHT_C} M${LEFT_C} ${BUS_Y} V${GROUP_Y + 6} M${RIGHT_C} ${BUS_Y} V${GROUP_Y + 6}`}
             delay={1.0}
             reduced={reduced}
           />
-          <Wire d={`M${LEFT_C} ${DROP_Y} V${CARDS_Y - 8} M${RIGHT_C} ${DROP_Y} V${CARDS_Y - 8}`} delay={1.5} reduced={reduced} />
+          <Wire d={`M${LEFT_C} ${DROP_Y - 6} V${CARDS_Y} M${RIGHT_C} ${DROP_Y - 6} V${CARDS_Y}`} delay={1.5} reduced={reduced} />
         </svg>
 
         {/* the chain of command */}
         {TEAM.leadership.map((role, i) => (
           <Node key={role} x={CHAIN_X[i]} y={0} w={NODE_W} h={NODE_H} delay={0.14 + i * 0.28} tone={i === 0 ? 'flow-node--lead' : undefined}>
-            <span className="flow-node__rank">{String(i + 1).padStart(2, '0')}</span>
             <span className="flow-node__name">{role}</span>
           </Node>
         ))}
         {/* the two branches */}
-        <Node x={LEFT_C - 230} y={GROUP_Y} w={460} h={GROUP_H} delay={1.24} tone="flow-node--tech">
-          <span className="flow-node__name">{TEAM.technical.length} technical sub-teams</span>
+        <Node x={LEFT_C - 230} y={GROUP_Y} w={460} h={GROUP_H} delay={1.24}>
+          <span className="flow-node__name" style={{ background: 'var(--paper)', padding: '0 18px' }}>
+            <span className="flow-node__count">{TEAM.technical.length}</span> technical sub-teams
+          </span>
         </Node>
-        <Node x={RIGHT_C - 250} y={GROUP_Y} w={500} h={GROUP_H} delay={1.34} tone="flow-node--soft">
-          <span className="flow-node__name">{TEAM.nonTechnical.length} non-technical sub-teams</span>
+        <Node x={RIGHT_C - 250} y={GROUP_Y} w={500} h={GROUP_H} delay={1.34}>
+          <span className="flow-node__name" style={{ background: 'var(--paper)', padding: '0 18px' }}>
+            <span className="flow-node__count" style={{ color: 'var(--ink)' }}>{TEAM.nonTechnical.length}</span> non-technical sub-teams
+          </span>
         </Node>
 
-        <div className="abs" style={{ left: 0, top: CARDS_Y, width: LEFT_W, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
+        <div className="abs" style={{ left: 0, top: CARDS_Y, width: LEFT_W, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', columnGap: 32, rowGap: 26 }}>
           {TEAM.technical.map((s, i) => (
-            <Unit key={s.name} name={s.name} what={s.what} delay={1.62 + i * 0.07} tone="card--peach" />
+            <Unit key={s.name} name={s.name} what={s.what} delay={1.62 + i * 0.07} tone="ruled--orange" />
           ))}
         </div>
 
-        <div className="abs" style={{ left: RIGHT_X, top: CARDS_Y, width: RIGHT_W, display: 'grid', gap: 22 }}>
+        <div className="abs" style={{ left: RIGHT_X, top: CARDS_Y, width: RIGHT_W, display: 'grid', rowGap: 26 }}>
           {TEAM.nonTechnical.map((s, i) => (
-            <Unit key={s.name} name={s.name} what={s.what} delay={1.76 + i * 0.1} tone="card--blush" />
+            <Unit key={s.name} name={s.name} what={s.what} delay={1.76 + i * 0.1} tone="ruled--ink" />
           ))}
         </div>
       </div>

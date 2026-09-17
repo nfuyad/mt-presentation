@@ -15,8 +15,7 @@ interface Props {
 const UNCOVER = [0.4, 0.85, 0.2, 1] as const
 const RISE = [0.2, 0.7, 0.25, 1] as const
 
-/* A photograph on the drawing sheet: thin border, two orange registration corners.
-   It is uncovered by a curtain of paper rather than by clipping the bitmap and fades
+/* A photograph on the sheet, set straight on the paper with no mount. It is uncovered by a curtain of paper rather than by clipping the bitmap and fades
    up out of a slight zoom, but nothing is laid over the picture itself — no wash and
    no caption. The pictures carry themselves; the presenter names them. */
 export function Frame({ src, alt, style, className, position, delay = 0 }: Props) {
@@ -41,8 +40,6 @@ export function Frame({ src, alt, style, className, position, delay = 0 }: Props
           transition={{ duration: reduced ? 0 : 0.85, ease: UNCOVER, delay: at }}
         />
       </div>
-      <span className="frame__corner frame__corner--tl" />
-      <span className="frame__corner frame__corner--br" />
     </figure>
   )
 }

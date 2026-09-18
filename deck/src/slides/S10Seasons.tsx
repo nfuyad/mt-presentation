@@ -6,7 +6,7 @@ import { SEASONS } from '../content/facts'
 /* The one orchestrated moment in the deck: the line draws itself, stops on 2024, then finishes. */
 const W = 1728
 const H = 680
-const PAD = { l: 90, r: 120, t: 70, b: 120 }
+const PAD = { l: 90, r: 120, t: 110, b: 120 }
 const MAX_RANK = 24
 
 const xOf = (i: number) => PAD.l + (i * (W - PAD.l - PAD.r)) / (SEASONS.length - 1)
@@ -35,7 +35,7 @@ export function S10Seasons() {
       </Reveal>
 
 
-      <svg className="abs" style={{ left: 0, top: 90 }} width={W} height={H} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Rank by year: 13, 11, 3 on design review, cancelled, 16, 16, 21, 8, 7">
+      <svg className="abs" style={{ left: 0, top: 120 }} width={W} height={H} viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Rank by year: 13, 11, 3 on design review, cancelled, 16, 16, 21, 8, 7">
         {[1, 5, 10, 15, 20].map((r) => (
           <g key={r}>
             <line x1={PAD.l - 20} x2={W - PAD.r + 20} y1={yOf(r)} y2={yOf(r)} stroke="var(--line)" strokeWidth="2" strokeDasharray={r === 1 ? undefined : '2 10'} />

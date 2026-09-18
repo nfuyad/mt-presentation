@@ -85,54 +85,10 @@ export const SLIDES: SlideMeta[] = [
     rover: { idle: 'bob', enter: 'climb' },
   },
   {
-    id: 'm-servicing',
-    section: 'Mission 01',
-    title: 'Equipment Servicing',
-    endsAt: 195,
-    words: 58,
-    spoken:
-      'Over three days the rover has to run four completely different missions. The first is equipment servicing. Drive to a mock lander you cannot see, and then flip switches, turn knobs, plug in connectors and type on a keyboard — with a robot arm, from a kilometre away. This year we had the third-highest score of any team on it.',
-    notes: 'Hold your hand up and mime the switch. The distance is the thing that lands.',
-    rover: { idle: 'showcase', enter: 'drive' },
-  },
-  {
-    id: 'm-autonomous',
-    section: 'Mission 02',
-    title: 'Autonomous Navigation',
-    endsAt: 220,
-    words: 55,
-    spoken:
-      'Second, autonomous navigation. Nobody touches the controls. The rover is given a point on a map, hundreds of metres away, and it has to get there on its own — across open desert, finding markers by sight. Four sensors that are each wrong in their own way, and a computer that decides which one to trust.',
-    notes: 'The line about four imperfect answers is the one to land if you have a second to spare.',
-    rover: { idle: 'turntable', enter: 'spin' },
-  },
-  {
-    id: 'm-science',
-    section: 'Mission 03',
-    title: 'Science',
-    endsAt: 245,
-    words: 55,
-    spoken:
-      'Third, science. Dig soil in the field, run the assays on board, and then stand in front of a panel of actual scientists and defend what you think you found. This is the mission that decides whether a rover is a robot or an instrument. Ninety-five out of a hundred this year.',
-    notes: 'Ninety-five out of a hundred is the strongest single number in the deck. Say it slowly.',
-    rover: { idle: 'bob', enter: 'wobble' },
-  },
-  {
-    id: 'm-delivery',
-    section: 'Mission 04',
-    title: 'Delivery',
-    endsAt: 270,
-    words: 50,
-    spoken:
-      'And fourth, delivery. Search the terrain, find a toolbox, pick it up, carry more than five kilos across rocks, and hand it to an astronaut on the other side. Fourth-highest score of any team.',
-    notes: 'Keep this one brisk — it is the last of the four and the audience has the pattern by now.',
-    rover: { idle: 'bob', enter: 'drive' },
-  },
-  {
     id: 'seasons',
     section: 'Eight seasons',
     title: 'Eight seasons since 2018',
-    endsAt: 310,
+    endsAt: 210,
     words: 90,
     spoken:
       'This is every season since 2018. Thirteenth. Eleventh. Third on the design review the year the finals were cancelled. Sixteenth. Sixteenth. Then twenty-first — the year everything broke. Then eighth. And this May, seventh in the world, out of a hundred and sixteen. Five Bangladeshi teams reached the finals and United International University finished third overall. The line that matters is the one after the failure. Nothing on this chart got better because a season went smoothly.',
@@ -143,7 +99,7 @@ export const SLIDES: SlideMeta[] = [
     id: 'outreach',
     section: 'Outreach',
     title: 'Nobody gets there alone',
-    endsAt: 350,
+    endsAt: 250,
     words: 90,
     spoken:
       'None of this comes from working alone. Over the past two years we have taken the rover to more than twenty schools and colleges across Bangladesh to teach STEM, and we mentor school teams into the FIRST Global Challenge and the World Robot Olympiad. That is Team Lazy Go, in Singapore, carrying the flag at the World Robot Olympiad. Somebody let us touch a robot once. That is the only reason we are standing here.',
@@ -154,7 +110,7 @@ export const SLIDES: SlideMeta[] = [
     id: 'partners',
     section: 'Partners',
     title: 'Beyond the competition',
-    endsAt: 380,
+    endsAt: 280,
     words: 75,
     spoken:
       'And none of this stops at the competition. We work with industry — global partners who answered a student email. Together we verified a three-kilometre radio link in Bangladeshi conditions. We designed an antenna with one of them that they now sell as a product, built on our codebase. And last year the largest conglomerate in Bangladesh put its trust in us as title sponsor. That is the part we care about most: industry and academia solving real requirements together, not just a rulebook.',
@@ -166,7 +122,7 @@ export const SLIDES: SlideMeta[] = [
     id: 'struggle',
     section: 'Not on the spec sheet',
     title: 'The part that is not on the spec sheet',
-    endsAt: 425,
+    endsAt: 325,
     words: 100,
     spoken:
       'Now the part nobody puts on the poster. In 2024 the chassis broke two days before the competition, and the team rebuilt it in the United States with whatever they had carried with them. In 2025 the Utah heat hit fifty-one degrees and every camera on the rover went down — and the team finished the delivery mission on the one camera that was still alive, the one underneath. In 2026, mid-mission, the communication link went down — and they navigated on the onboard minimap alone and finished the run anyway. That is not a story about robots. Competition is a part of learning: it is what turns a group of students into people who can be handed a broken thing and a deadline.',
@@ -177,16 +133,16 @@ export const SLIDES: SlideMeta[] = [
     id: 'close',
     section: 'Close',
     title: 'Come and break things with us',
-    endsAt: 450,
-    words: 55,
+    endsAt: 350,
+    words: 75,
     spoken:
-      'One last thing. Etched into the aluminium shell of our rover are jamdani motifs. If that machine ever reaches Mars, something Bangladeshi goes with it. You do not need a space agency to start. You need a team, a deadline, and somewhere to break things. Come find us. Thank you.',
-    notes: 'Hold this slide up during Q&A. The QR is the only conversion mechanism in the talk — test that it scans from six metres.',
+      'Come and ask us anything — what broke, what it cost, how you join a team. And one last thing. Etched into the aluminium shell of our rover are jamdani motifs. If that machine ever reaches Mars, something Bangladeshi goes with it. You do not need a space agency to start. You need a team, a deadline, and somewhere to break things. Come find us. Thank you.',
+    notes: 'The slide opens on the school-visit close, then settles on the astronaut close. Hold this one up during Q&A. The QR is the only conversion mechanism in the talk — test that it scans from six metres.',
     rover: { idle: 'wave', enter: 'zoom' },
   },
 ]
 
-export const TOTAL_SECONDS = 450
+export const TOTAL_SECONDS = 350
 
 export function formatClock(seconds: number): string {
   const s = Math.max(0, Math.floor(seconds))

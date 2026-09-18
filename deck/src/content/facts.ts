@@ -188,10 +188,7 @@ export interface Season {
 
 export const SEASONS: Season[] = [
   { year: 2018, rank: 13, kind: 'final', label: '13th' },
-  { year: 2019, rank: 11, kind: 'final', label: '11th' },
-  { year: 2020, rank: 3, kind: 'sar', label: '3rd', note: 'design review only · finals cancelled' },
-  { year: 2021, rank: null, kind: 'cancelled', label: '—', note: 'finals cancelled' },
-  { year: 2022, rank: 16, kind: 'final', label: '16th' },
+  { year: 2021, rank: 4, kind: 'final', label: '4th' },
   { year: 2023, rank: 16, kind: 'final', label: '16th' },
   { year: 2024, rank: 21, kind: 'final', label: '21st' },
   { year: 2025, rank: 8, kind: 'final', label: '8th' },

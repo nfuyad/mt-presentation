@@ -88,11 +88,11 @@ export const SLIDES: SlideMeta[] = [
     id: 'seasons',
     section: 'Eight seasons',
     title: 'Eight seasons since 2018',
-    endsAt: 210,
-    words: 90,
+    endsAt: 198,
+    words: 64,
     spoken:
-      'This is every season since 2018. Thirteenth. Eleventh. Third on the design review the year the finals were cancelled. Sixteenth. Sixteenth. Then twenty-first — the year everything broke. Then eighth. And this May, seventh in the world, out of a hundred and sixteen. Five Bangladeshi teams reached the finals and United International University finished third overall. The line that matters is the one after the failure. Nothing on this chart got better because a season went smoothly.',
-    notes: 'Be precise about 2020 and 2021 out loud — the finals were cancelled both years. Trace the whole line with your hand.',
+      'This is every season since 2018. Thirteenth. Fourth. Sixteenth. Then twenty-first — the year everything broke. Then eighth. And this May, seventh in the world, out of a hundred and sixteen. Five Bangladeshi teams reached the finals and United International University finished third overall. The line that matters is the one after the failure. Nothing on this chart got better because a season went smoothly.',
+    notes: 'Trace the whole line with your hand and let it land on 2024 before the comeback.',
     rover: { idle: 'bob', enter: 'climb' },
   },
   {

@@ -38,6 +38,27 @@ export function S01Cover() {
           Problem Solvers
         </h1>
       </Reveal>
+
+      <Reveal delay={0.55} className="abs" style={{ left: 96, top: 640 }}>
+        <span
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 10,
+            padding: '10px 18px',
+            border: '1px solid var(--line)',
+            borderRadius: 999,
+            background: 'rgba(255,255,255,0.55)',
+            fontFamily: 'var(--mono)',
+            fontSize: 14,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: 'var(--ink-2)',
+          }}
+        >
+          BRAC University · 25th Anniversary Seminar
+        </span>
+      </Reveal>
     </div>
   )
 }

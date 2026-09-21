@@ -26,7 +26,7 @@ export function S11Outreach() {
       </Reveal>
 
       <Reveal delay={0.2} className="abs ruled" style={{ left: 0, top: 486, width: 600 }}>
-        <p className="body" style={{ color: 'var(--ink-2)' }}>
+        {/* <p className="body" style={{ color: 'var(--ink-2)' }}>
           And we mentor school teams into{' '}
           {OUTREACH.mentors.map((m, i) => (
             <span key={m}>
@@ -35,7 +35,7 @@ export function S11Outreach() {
             </span>
           ))}
           .
-        </p>
+        </p> */}
         <p className="body" style={{ color: 'var(--ink-2)', marginTop: 18 }}>
           We believe that the next generation of engineers and scientists will be the ones to take humanity to Mars. We are proud to mentor them, and to show them that they can do it too.
         </p>

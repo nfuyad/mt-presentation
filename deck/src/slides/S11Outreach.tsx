@@ -42,7 +42,7 @@ export function S11Outreach() {
       </Reveal>
 
       <Reveal delay={0.06} y={0} scale={0.985} className="abs" style={{ left: 680, top: 90, width: 1048, height: 440 }}>
-        <Frame src="outreach.png" alt="MT Outreach" delay={0.06} style={{ width: '100%', height: '100%' }} position="center 52%" />
+        <Frame src="outreach.png" alt="    " delay={0.06} style={{ width: '100%', height: '100%' }} position="center 52%" />
       </Reveal>
 
       <div className="abs" style={{ left: 680, top: 560, width: 1048, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
